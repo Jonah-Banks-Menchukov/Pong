@@ -1,3 +1,5 @@
+//Jonah Banks
+//11.21.25
 package com.pong;
 
 import javax.swing.*;
@@ -16,7 +18,6 @@ public class PongGame extends JPanel implements MouseMotionListener {
     // step 1 add any other private variables you may need to play the game.
 
     public PongGame() {
-
         aiPaddle = new Paddle(610, 240, 50, 9, Color.WHITE);
         JLabel pScore = new JLabel("0");
         JLabel aiScore = new JLabel("0");
@@ -26,8 +27,10 @@ public class PongGame extends JPanel implements MouseMotionListener {
         aiScore.setVisible(true);
         userMouseY = 0;
         addMouseMotionListener(this);
-        ball = new Ball(200, 200, 10, 3, Color.RED, 10);
-
+        ball = new Ball(200, 200, 10, 3, Color.WHITE,10);
+        userPaddle=new Paddle(0,240,50,9,Color.WHITE);
+        wall=new Wall();
+        faster=new Speedup();
         //create any other objects necessary to play the game.
 
     }
@@ -50,12 +53,12 @@ public class PongGame extends JPanel implements MouseMotionListener {
 
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, width, height);
-
         g.setColor(Color.WHITE);
         g.drawString("The Score is User:" + playerScore + " vs Ai:" + aiScore, 240, 20);
         ball.draw(g);
         aiPaddle.draw(g);
-        
+        userPaddle.draw(g) ;  
+        wall.draw(g);
         //call the "draw" function of any visual component you'd like to show up on the screen.
 
     }
@@ -83,9 +86,12 @@ public class PongGame extends JPanel implements MouseMotionListener {
     // pixels) and the ai scores
     // if the ball goes off the left edge (0)
     public void pointScored() {
-
+        if(ball.getX()>=640){
+        playerScore+=1;
+    }else if (ball.getX()<=0){
+        aiScore+=1;
     }
-
+    }
     // you do not need to edit the below methods, but please do not remove them as
     // they are required for the program to run.
     @Override
