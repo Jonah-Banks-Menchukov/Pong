@@ -1,5 +1,6 @@
 //Jonah Banks
 //11.21.25
+//This class stores pong constructor, graphics 
 package com.pong;
 
 import javax.swing.*;
@@ -15,6 +16,10 @@ public class PongGame extends JPanel implements MouseMotionListener {
     private int playerScore;
     private int aiScore;
     private Ball ball;
+    private Paddle userPaddle;
+    private Wall wall;
+    private Speedup faster;
+    private SlowDown slower;
     // step 1 add any other private variables you may need to play the game.
 
     public PongGame() {
@@ -29,10 +34,10 @@ public class PongGame extends JPanel implements MouseMotionListener {
         addMouseMotionListener(this);
         ball = new Ball(200, 200, 10, 3, Color.WHITE,10);
         userPaddle=new Paddle(0,240,50,9,Color.WHITE);
-        wall=new Wall();
-        faster=new Speedup();
+        wall=new Wall(300,400,40,5,Color.BLUE);
+        faster= new Speedup(400,300,40,40);
+        slower=new SlowDown(200,200,40,40);
         //create any other objects necessary to play the game.
-
     }
 
     // precondition: None
@@ -59,8 +64,9 @@ public class PongGame extends JPanel implements MouseMotionListener {
         aiPaddle.draw(g);
         userPaddle.draw(g) ;  
         wall.draw(g);
+        faster.draw(g);
+        slower.draw(g);
         //call the "draw" function of any visual component you'd like to show up on the screen.
-
     }
 
     // precondition: all required visual components are intialized to non-null
@@ -70,11 +76,13 @@ public class PongGame extends JPanel implements MouseMotionListener {
         //add commands here to make the game play propperly
         
         aiPaddle.moveY(ball.getY());
-
-        if (aiPaddle.isTouching(ball)) {
+        userPaddle.moveY(userMouseY);
+        if (aiPaddle.isTouching(ball)||wall.isTouching(ball)) {
            ball.reverseX();
         }
- 
+        if (userPaddle.isTouching(ball)){
+            ball.reverseX();
+        }
         pointScored();
 
     }

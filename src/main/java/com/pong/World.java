@@ -2,7 +2,6 @@ package com.pong;
 import java.awt.Color;
 import java.awt.event.*;
 
-
 import javax.swing.*;
 public class World {
  
@@ -41,7 +40,4 @@ public static void main(String[] args) {
         timer.start();
 
     }
-       
-        
-        
 	}
