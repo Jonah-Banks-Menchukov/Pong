@@ -1,3 +1,5 @@
+//Jonah Banks
+//Stores all methods and atrributes of a slowdown
 package com.pong;
 import java.awt.Color;
 import java.awt.Graphics;

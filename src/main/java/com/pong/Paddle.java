@@ -1,3 +1,5 @@
+//Jonah Banks
+//Stores all methods and attributes of a paddle
 package com.pong;
 
 import java.awt.Color;

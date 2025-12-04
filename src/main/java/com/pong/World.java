@@ -1,3 +1,5 @@
+//Jonah Banks
+//Plays a frame of the game, sets everything up
 package com.pong;
 import java.awt.Color;
 import java.awt.event.*;

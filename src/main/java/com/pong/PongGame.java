@@ -1,6 +1,6 @@
 //Jonah Banks
 //11.21.25
-//This class stores pong constructor, graphics 
+//This class stores pong constructor, graphics, gameLocic methods, etc. to make game work 
 package com.pong;
 
 import javax.swing.*;
@@ -21,7 +21,7 @@ public class PongGame extends JPanel implements MouseMotionListener {
     private Speedup faster;
     private SlowDown slower;
     // step 1 add any other private variables you may need to play the game.
-
+    //pong game constructor
     public PongGame() {
         aiPaddle = new Paddle(610, 240, 50, 9, Color.WHITE);
         JLabel pScore = new JLabel("0");

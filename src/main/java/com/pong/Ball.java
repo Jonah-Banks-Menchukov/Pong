@@ -1,3 +1,5 @@
+//Jonah Banks
+//Stores all methods and attributes of a ball
 package com.pong;
 
 import java.awt.Color;

@@ -1,3 +1,5 @@
+//Jonah Banks
+//Stores all methods and atrributes of a speedup
 package com.pong;
 
 import java.awt.Color;
